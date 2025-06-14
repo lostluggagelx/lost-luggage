@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lost Luggage Lisbon</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: linear-gradient(to bottom right, #f8f9ff, #e0e7ff);
+      color: #333;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      padding: 3rem 1rem;
+      background: linear-gradient(to bottom, #fff, #f0f4ff);
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #5a2d82;
+    }
+    p.subtitle {
+      font-size: 1.25rem;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+    }
+    .badges {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.95rem;
+    }
+    .badge {
+      background: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.05);
+      font-weight: 500;
+    }
+    .call-to-action {
+      margin-top: 2rem;
+    }
+    .call-to-action button {
+      background: linear-gradient(to right, #4f46e5, #9333ea);
+      color: white;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .how-it-works, .why-trust, .middle-info, footer {
+      padding: 3rem 1rem;
+      background: white;
+    }
+    .section-title {
+      font-size: 2rem;
+      color: #4f46e5;
+      margin-bottom: 1rem;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    input, button {
+      width: 100%;
+      padding: 1rem;
+      margin-top: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      background: #111;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+    .note {
+      font-size: 0.9rem;
+      color: #4b5563;
+      margin-top: 1rem;
+    }
+    footer {
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Did they lose your luggage?</h1>
+    <p class="subtitle">We rent you clothes in a matter of hours so you can enjoy your trip without stress.</p>
+    <div class="badges">
+      <span class="badge">✅ Sanitized & Clean</span>
+      <span class="badge">⚡ Same Day Delivery</span>
+      <span class="badge">💯 100% Satisfaction</span>
+    </div>
+    <div class="call-to-action">
+      <button onclick="document.getElementById('emailForm').scrollIntoView({behavior: 'smooth'})">Get Emergency Clothes Now</button>
+    </div>
+  </header>
+
+  <section class="how-it-works">
+    <h2 class="section-title">How It Works</h2>
+    <div class="how-it-works-icons">
+      <div class="icon-step">
+        <div class="icon-circle">📦</div>
+        <p>Pick your bundle</p>
+      </div>
+      <div class="icon-step">
+        <div class="icon-circle">⏱</div>
+        <p>We deliver fast</p>
+      </div>
+      <div class="icon-step">
+        <div class="icon-circle">📍</div>
+        <p>Return in Lisbon</p>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="why-trust" style="background: linear-gradient(to bottom, #fff, #f0f4ff); margin-bottom: 3rem;">
+    <h2 class="section-title">Why Travelers Trust Us</h2>
+    <div class="badges" style="flex-direction: column; gap: 1rem;">
+      <div>✅ Verified by 100+ Happy Travelers</div>
+      <div>✅ No Stress Shopping </div>
+      <div>✅ Hassle-Free Returns </div>
+      <div>✅ Pay After Confirmation</div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2 class="section-title">Get Emergency Clothes</h2>
+    <p>Lost your luggage? We'll help you get clothes fast!</p>
+    <form id="emailForm">
+      <input type="email" id="email" placeholder="your.email@example.com" required />
+      <button type="submit">Submit</button>
+    </form>
+    <p id="result"></p>
+    <p class="note">⏱ We’ll contact you in under 5 minutes with bundle options, pricing, and availability.</p>
+  </section>
+
+  <footer>
+    <p>Lost Luggage Lisbon — Your trusted partner for travel emergencies in Lisbon</p>
+    <p>© 2025 Lost Luggage Lisbon. Secure, local, and stress-free.</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('emailForm');
+    const result = document.getElementById('result');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+
+      try {
+        const response = await fetch("http://localhost:3000/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email })
+        });
+
+        const res = await response.json();
+        result.textContent = res.success
+          ? "✅ Email saved! We'll contact you soon."
+          : "❌ Something went wrong.";
+      } catch (err) {
+        console.error(err);
+        result.textContent = "❌ Error submitting the form.";
+      }
+    });
+  </script>
+</body>
+</html>
