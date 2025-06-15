@@ -2,118 +2,170 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lost Luggage Lisbon</title>
   <style>
-    body {
-      font-family: sans-serif;
-      background: linear-gradient(to bottom right, #f8f9ff, #e0e7ff);
-      color: #333;
+    :root {
+      --primary: #4f46e5;
+      --accent: #9333ea;
+      --text-dark: #1f2937;
+      --text-light: #6b7280;
+      --bg-light: #f9fafb;
+      --bg-white: #ffffff;
+      --radius: 1rem;
+      --shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to bottom right, #eef2ff, #f5f3ff);
+      padding: 3rem 1rem 2rem;
       text-align: center;
     }
-    header {
-      padding: 3rem 1rem;
-      background: linear-gradient(to bottom, #fff, #f0f4ff);
-    }
+
     h1 {
       font-size: 2.5rem;
-      color: #5a2d82;
-    }
-    p.subtitle {
-      font-size: 1.25rem;
-      color: #555;
-      max-width: 600px;
-      margin: 0 auto 1.5rem;
-    }
-    .badges {
-      margin-top: 1rem;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      font-size: 0.95rem;
-    }
-    .badge {
-      background: #fff;
-      padding: 0.5rem 1rem;
-      border-radius: 999px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.05);
-      font-weight: 500;
-    }
-    .call-to-action {
-      margin-top: 2rem;
-    }
-    .call-to-action button {
-      background: linear-gradient(to right, #4f46e5, #9333ea);
-      color: white;
-      padding: 1rem 2rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .how-it-works, .why-trust, .middle-info, footer {
-      padding: 3rem 1rem;
-      background: white;
-    }
-    .section-title {
-      font-size: 2rem;
-      color: #4f46e5;
+      color: var(--primary);
       margin-bottom: 1rem;
     }
-    .container {
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
       max-width: 500px;
-      margin: auto;
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      margin-inline: auto;
     }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .badge {
+      background: var(--bg-white);
+      border-radius: 999px;
+      padding: 0.5rem 1rem;
+      box-shadow: var(--shadow);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    .button-main {
+      margin-top: 2rem;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      color: #fff;
+      padding: 1rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      width: 90%;
+      max-width: 320px;
+    }
+
+    section {
+      padding: 2.5rem 1rem;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .how-it-works-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .icon-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.95rem;
+    }
+
+    .icon-circle {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: var(--bg-white);
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
     input, button {
       width: 100%;
       padding: 1rem;
       margin-top: 1rem;
       border: 1px solid #ccc;
-      border-radius: 6px;
+      border-radius: 8px;
     }
-    button {
-      background: #111;
+
+    button[type="submit"] {
+      background: var(--primary);
       color: white;
       font-weight: bold;
       cursor: pointer;
     }
+
     #result {
       margin-top: 1rem;
       font-size: 0.9rem;
     }
-    .note {
-      font-size: 0.9rem;
-      color: #4b5563;
-      margin-top: 1rem;
-    }
+
     footer {
-      font-size: 0.9rem;
-      color: #777;
+      font-size: 0.8rem;
+      color: var(--text-light);
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2rem; }
+      .section-title { font-size: 1.5rem; }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Did they lose your luggage?</h1>
-    <p class="subtitle">We rent you clothes in a matter of hours so you can enjoy your trip without stress.</p>
+    <h1>Luggage Lost?</h1>
+    <p class="subtitle">We deliver emergency clothes in hours — clean, stylish, and ready to wear.</p>
     <div class="badges">
-      <span class="badge">✅ Sanitized & Clean</span>
-      <span class="badge">⚡ Same Day Delivery</span>
-      <span class="badge">💯 100% Satisfaction</span>
+      <span class="badge">✅ Clean & Sanitized</span>
+      <span class="badge">⚡ Delivered Same Day</span>
+      <span class="badge">💯 Traveler Recommended</span>
     </div>
-    <div class="call-to-action">
-      <button onclick="document.getElementById('emailForm').scrollIntoView({behavior: 'smooth'})">Get Emergency Clothes Now</button>
-    </div>
+    <button class="button-main" onclick="document.getElementById('emailForm').scrollIntoView({behavior: 'smooth'})">
+      Get Emergency Clothes Now
+    </button>
   </header>
 
-  <section class="how-it-works">
+  <section>
     <h2 class="section-title">How It Works</h2>
     <div class="how-it-works-icons">
       <div class="icon-step">
@@ -131,32 +183,32 @@
     </div>
   </section>
 
-
-
-  <section class="why-trust" style="background: linear-gradient(to bottom, #fff, #f0f4ff); margin-bottom: 3rem;">
+  <section style="background: #f5f5ff;">
     <h2 class="section-title">Why Travelers Trust Us</h2>
-    <div class="badges" style="flex-direction: column; gap: 1rem;">
-      <div>✅ Verified by 100+ Happy Travelers</div>
-      <div>✅ No Stress Shopping </div>
-      <div>✅ Hassle-Free Returns </div>
-      <div>✅ Pay After Confirmation</div>
+    <div class="badges" style="flex-direction: column; align-items: center; gap: 0.75rem;">
+      <div>✅ Trusted by 100+ Happy Travelers</div>
+      <div>✅ Zero-Stress Shopping</div>
+      <div>✅ Easy Returns</div>
+      <div>✅ Pay Only After Confirmation</div>
     </div>
   </section>
 
-  <section class="container">
-    <h2 class="section-title">Get Emergency Clothes</h2>
-    <p>Lost your luggage? We'll help you get clothes fast!</p>
-    <form id="emailForm">
-      <input type="email" id="email" placeholder="your.email@example.com" required />
-      <button type="submit">Submit</button>
-    </form>
-    <p id="result"></p>
-    <p class="note">⏱ We’ll contact you in under 5 minutes with bundle options, pricing, and availability.</p>
+  <section>
+    <div class="container">
+      <h2 class="section-title">Get Emergency Clothes</h2>
+      <p>Just drop your email. We'll reply in minutes with bundle options.</p>
+      <form id="emailForm">
+        <input type="email" id="email" placeholder="your.email@example.com" required />
+        <button type="submit">Submit</button>
+      </form>
+      <p id="result"></p>
+      <p style="font-size: 0.85rem; color: var(--text-light);">⏱ We’ll contact you in under 5 minutes with bundle options, pricing, and availability.</p>
+    </div>
   </section>
 
   <footer>
-    <p>Lost Luggage Lisbon — Your trusted partner for travel emergencies in Lisbon</p>
-    <p>© 2025 Lost Luggage Lisbon. Secure, local, and stress-free.</p>
+    Lost Luggage Lisbon — Clothes delivered to your door, in Lisbon, fast.
+    <br>© 2025 Lost Luggage Lisbon. All rights reserved.
   </footer>
 
   <script>
