@@ -1,8 +1,8 @@
-const express = require('express');
-const fs = require('fs');
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args)); // ✅ Fix
+import express from 'express';
+import fs from 'fs';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import fetch from 'node-fetch';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -19,19 +19,17 @@ app.post('/submit', async (req, res) => {
   const entry = `${new Date().toISOString()}, ${email}\n`;
 
   try {
-    // Save locally
     fs.appendFileSync('emails.csv', entry);
 
-    // Send to Google Sheet
     await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ email })
     });
 
     res.json({ success: true });
   } catch (err) {
-    console.error('❌ Error:', err);
+    console.error('❌ Error submitting:', err);
     res.status(500).json({ success: false });
   }
 });
