@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How Lost Luggage Lisbon Works</title>
+  <link rel="icon" href="favicon.png" />
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --accent: #9333ea;
+      --bg-light: #f9f9ff;
+      --text-dark: #1f2937;
+      --text-light: #6b7280;
+      --shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+      --radius: 1rem;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* New Navbar styles */
+    nav.navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 900px;
+      margin: 1rem auto 2rem;
+      padding: 0.75rem 1rem;
+      background: linear-gradient(to right, #eef2ff, #f5f3ff);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .navbar-title {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      user-select: none;
+    }
+
+    .navbar-title::before {
+      content: "🧳";
+      font-size: 1.5rem;
+    }
+
+    .navbar-nav a {
+      margin-left: 0.75rem;
+      font-size: 0.9rem;
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-nav a:hover,
+    .navbar-nav a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    header {
+      text-align: center;
+      padding: 0 1rem 2rem;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      max-width: 600px;
+      margin: 0 auto;
+      margin-bottom: 2rem;
+    }
+
+    section.how-it-works-detail {
+      padding: 0 1rem 3rem;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .process-steps h3 {
+      color: var(--accent);
+      font-size: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .process-steps p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+    }
+
+    .button-main {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      color: white;
+      border: none;
+      border-radius: 0.75rem;
+      font-size: 1rem;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-top: 3rem;
+      padding: 2rem 1rem;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.8rem; }
+      .section-title { font-size: 1.5rem; }
+      nav.navbar {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .navbar-nav a {
+        margin-left: 0;
+        margin-right: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-title">Lost Luggage Lisbon</div>
+    <div class="navbar-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="how-it-works.html" class="nav-link active">How It Works</a>
+      <a href="contacts.html" class="nav-link">Contacts</a>
+    </div>
+  </nav>
+
+  <header>
+    <h1>How It Works</h1>
+    <p class="subtitle">Your emergency clothing delivery in Lisbon — explained simply.</p>
+  </header>
+
+  <section class="how-it-works-detail">
+    <div class="container">
+      <!-- Intro block -->
+      <div style="background: #eef2ff; padding: 2rem; border-radius: var(--radius); margin-bottom: 2rem; box-shadow: var(--shadow); text-align: center;">
+        <h2 style="font-size: 1.6rem; color: var(--primary); margin-bottom: 1rem;">How Lost Luggage Lisbon Works</h2>
+        <p style="color: var(--text-dark); font-size: 1rem; margin-bottom: 0.5rem;">
+          ✈️ Every day, over <strong>25 million bags</strong> are mishandled by airlines.
+        </p>
+        <p style="color: var(--text-dark); font-size: 1rem; margin-bottom: 0.5rem;">
+          Losing luggage can cost travelers <strong>€200–500</strong> in clothes and essentials — plus hours of lost vacation.
+        </p>
+        <p style="color: var(--accent); font-size: 1.05rem; font-weight: 600; margin-top: 1rem;">
+          Lost Luggage Lisbon exists to turn that stress into comfort — fast.
+        </p>
+      </div>
+
+      <h2 class="section-title">Simple Steps to Feel Like Yourself Again</h2>
+
+      <div class="process-steps">
+        <h3>👕 Step 1: Tell Us What You Need</h3>
+        <p>Submit your email and we’ll contact you instantly to confirm your sizes, styles, and needs.</p>
+
+        <h3>🎒 Step 2: We Curate Your Bundle</h3>
+        <p>We handpick fresh, season-appropriate clothes — clean, stylish, and perfect for your trip.</p>
+
+        <h3>🚚 Step 3: Same-Day Delivery</h3>
+        <p>Your bundle is delivered to your hotel, Airbnb, or airport — often in just hours.</p>
+
+        <h3>🔁 Step 4: Easy Return When You're Done</h3>
+        <p>Return the clothes through our pickup service or leave them at a designated drop-off spot in the Airport.</p>
+      </div>
+
+      <!-- Updated button linking to email input card centered on index.html -->
+      <a href="index.html#emailFormCentered" class="button-main">Get Emergency Clothes Now</a>
+    </div>
+  </section>
+
+  <footer>
+    Lost Luggage Lisbon — Clothes delivered to your door, in Lisbon, fast.<br/>
+    © 2025 Lost Luggage Lisbon. All rights reserved.
+  </footer>
+</body>
+</html>

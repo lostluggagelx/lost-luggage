@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lost Luggage Lisbon</title>
   <style>
     :root {
@@ -27,6 +27,37 @@
       background: var(--bg-light);
       color: var(--text-dark);
       line-height: 1.6;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: #fff;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar-title {
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .navbar-nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    .navbar-nav a:hover,
+    .navbar-nav a.active {
+      color: var(--primary);
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 2px;
     }
 
     header {
@@ -77,6 +108,10 @@
       cursor: pointer;
       width: 90%;
       max-width: 320px;
+      transition: background 0.3s ease;
+    }
+    .button-main:hover {
+      background: linear-gradient(to right, var(--accent), var(--primary));
     }
 
     section {
@@ -118,19 +153,25 @@
       box-shadow: var(--shadow);
     }
 
-    input, button {
+    input,
+    button {
       width: 100%;
       padding: 1rem;
       margin-top: 1rem;
       border: 1px solid #ccc;
       border-radius: 8px;
+      font-size: 1rem;
     }
 
-    button[type="submit"] {
+    button[type='submit'] {
       background: var(--primary);
       color: white;
       font-weight: bold;
       cursor: pointer;
+      border: none;
+    }
+    button[type='submit']:hover {
+      background: var(--accent);
     }
 
     #result {
@@ -146,26 +187,43 @@
     }
 
     @media (max-width: 600px) {
-      h1 { font-size: 2rem; }
-      .section-title { font-size: 1.5rem; }
+      h1 {
+        font-size: 2rem;
+      }
+      .section-title {
+        font-size: 1.5rem;
+      }
+      .navbar-nav a {
+        margin-left: 0.75rem;
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Luggage Lost?</h1>
-    <p class="subtitle">We deliver emergency clothes in hours — clean, stylish, and ready to wear.</p>
+  <nav class="navbar">
+    <div class="navbar-title">🧳 Lost Luggage Lisbon</div>
+    <div class="navbar-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="how-it-works.html" class="nav-link">How It Works</a>
+      <a href="Contacts.html" class="nav-link">Contacts</a>
+    </div>
+  </nav>
+
+  <header id="top">
+    <h1>Did they lose your Luggage?</h1>
+    <p class="subtitle">We deliver emergency clothes in hours — clean, standard, and ready to wear.</p>
     <div class="badges">
       <span class="badge">✅ Clean & Sanitized</span>
       <span class="badge">⚡ Delivered Same Day</span>
       <span class="badge">💯 Traveler Recommended</span>
     </div>
-    <button class="button-main" onclick="document.getElementById('emailForm').scrollIntoView({behavior: 'smooth'})">
+    <button class="button-main" onclick="scrollToEmailForm()">
       Get Emergency Clothes Now
     </button>
   </header>
 
-  <section>
+  <section id="how-it-works">
     <h2 class="section-title">How It Works</h2>
     <div class="how-it-works-icons">
       <div class="icon-step">
@@ -193,7 +251,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="emailFormCentered">
     <div class="container">
       <h2 class="section-title">Get Emergency Clothes</h2>
       <p>Just drop your email. We'll reply in minutes with bundle options.</p>
@@ -202,16 +260,52 @@
         <button type="submit">Submit</button>
       </form>
       <p id="result"></p>
-      <p style="font-size: 0.85rem; color: var(--text-light);">⏱ We’ll contact you in under 5 minutes with bundle options, pricing, and availability.</p>
+      <p style="font-size: 0.85rem; color: var(--text-light);">
+        ⏱ We’ll contact you in under 5 minutes with bundle options, pricing, and availability.
+      </p>
     </div>
   </section>
 
+
+  <!-- 💬 Support Section START -->
+  <section style="background: #eef2ff; padding: 3rem 1rem;">
+    <div class="container" style="text-align: center;">
+      <h2 class="section-title">Need Help Right Now?</h2>
+      <p style="color: var(--text-light); max-width: 500px; margin: 0 auto 1.5rem;">
+        Our Lisbon-based team is available <strong>24/7</strong> to support you. Whether it's sizing questions, delivery updates, or return instructions — we’re just a message away.
+      </p>
+
+      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <a href="https://wa.me/393669747649" target="_blank" style="background: #25D366; color: white; padding: 0.75rem 1.5rem; border-radius: 999px; text-decoration: none; font-weight: 600;">
+          💬 WhatsApp Us
+        </a>
+        <a href="mailto:lostluggagelx@gmail.com" style="background: var(--primary); color: white; padding: 0.75rem 1.5rem; border-radius: 999px; text-decoration: none; font-weight: 600;">
+          📧 Email Support
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- 💬 Support Section END -->
+
   <footer>
-    Lost Luggage Lisbon — Clothes delivered to your door, in Lisbon, fast.
-    <br>© 2025 Lost Luggage Lisbon. All rights reserved.
+    Lost Luggage Lisbon — Clothes delivered to your door, in Lisbon, fast.<br />
+    © 2025 Lost Luggage Lisbon. All rights reserved.
   </footer>
 
   <script>
+    function scrollToEmailForm() {
+      const el = document.getElementById('emailFormCentered');
+      if (!el) return;
+      const elRect = el.getBoundingClientRect();
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const elementTop = elRect.top + scrollTop;
+      const offset = window.innerHeight / 2 - el.offsetHeight / 2;
+      window.scrollTo({
+        top: elementTop - offset,
+        behavior: 'smooth'
+      });
+    }
+
     const form = document.getElementById('emailForm');
     const result = document.getElementById('result');
 
@@ -220,19 +314,19 @@
       const email = document.getElementById('email').value;
 
       try {
-        const response = await fetch("https://lost-luggage-1.onrender.com/submit", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email })
+        const response = await fetch('https://lost-luggage-1.onrender.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
         });
 
         const res = await response.json();
         result.textContent = res.success
           ? "✅ Email saved! We'll contact you soon."
-          : "❌ Something went wrong.";
+          : '❌ Something went wrong.';
       } catch (err) {
         console.error(err);
-        result.textContent = "❌ Error submitting the form.";
+        result.textContent = '❌ Error submitting the form.';
       }
     });
   </script>
