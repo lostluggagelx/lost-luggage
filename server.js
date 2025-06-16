@@ -22,26 +22,29 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.post('/submit', async (req, res) => {
+// Handle email submission
+app.post('/submit', (req, res) => {
   const { email } = req.body;
   if (!email) return res.status(400).json({ success: false });
 
   const entry = `${new Date().toISOString()}, ${email}\n`;
 
-  try {
-    fs.appendFileSync('emails.csv', entry);
+  // ✅ Respond immediately
+  res.json({ success: true });
 
-    await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email })
-    });
+  // 📁 Save email to CSV (non-blocking)
+  fs.appendFile('emails.csv', entry, err => {
+    if (err) console.error('❌ Failed to save email locally:', err);
+  });
 
-    res.json({ success: true });
-  } catch (err) {
-    console.error('❌ Error submitting:', err);
-    res.status(500).json({ success: false });
-  }
+  // 📤 Send to Google Sheet (non-blocking)
+  fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email })
+  }).catch(err => {
+    console.error('❌ Failed to send to Google Sheets:', err);
+  });
 });
 
 app.listen(PORT, () => {
