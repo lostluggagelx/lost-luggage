@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none';">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' *; script-src 'self' *; style-src 'self' 'unsafe-inline' *; font-src 'self' *; img-src 'self' data: *;">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="X-Frame-Options" content="DENY">
   <meta http-equiv="Strict-Transport-Security" content="max-age=63072000; includeSubDomains; preload">
@@ -117,6 +117,13 @@
       }
     }
   </style>
+  <script>
+  gtag('event', 'conversion', {
+      'sendto': 'AW-17156147136/vYyPCMSR19caEMCP2PQ',
+      'value': 1.0,
+      'currency': 'EUR'
+  });
+</script>
 </head>
 <body>
   <nav class="navbar">
